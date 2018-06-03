@@ -6,6 +6,7 @@ import Card from './Card';
 import App from './App'; //parent of Card
 import registerServiceWorker from './registerServiceWorker';
 import 'tachyons';
+import './index.css';
 
 ReactDOM.render(<App /> //robots: `robots.js`
 	, document.getElementById('root'));

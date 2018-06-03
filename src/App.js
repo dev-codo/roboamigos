@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import CardList from './CardList';
 import SearchBox from './SearchBox';
 import { robots } from './robots'; //destructured: because is not export `default` (is export const...)
+import './App.css';
 
 class App extends Component {
 	constructor() { //of `App` - empty default constructor
@@ -24,7 +25,7 @@ class App extends Component {
 		})
 		return (
 		  <div className='tc'>
-			<h1>Amigos Robos</h1>      
+			<h1 className='f1'>Amigos Robos</h1>      
 		  	<SearchBox buscarMudanca={this.onSearchChange}/> {/*eh a funcao 'buscarMudanca' no `SearchBox` - l155 - 17:10*/}
 		   	<CardList robosFofos={filterRobots} /> 
 		  </div>
