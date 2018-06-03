@@ -20,7 +20,7 @@ import Card from './Card';
 // }
 
 // CLEANER
-const CardList = ({ robosFofos }) => { //prop: robosFofos
+const CardList = ({ robosFofos }) => { //robosFofos -> prop
 	return (
 		<div>
 			{
