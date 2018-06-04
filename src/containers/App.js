@@ -1,9 +1,10 @@
 // pai do CardList
 import React, { Component } from 'react';
-import CardList from './CardList';
-import SearchBox from './SearchBox';
+import CardList from '../components/CardList';
+import SearchBox from '../components/SearchBox';
 // import { robots } from './robots'; //destructured: because is not export `default` (is export const...)
-import Scroll from './Scroll';
+import Scroll from '../components/Scroll';
+import ErrorBoundary from '../components/ErrorBoundary';
 import './App.css';
 
 class App extends Component {
@@ -15,26 +16,27 @@ class App extends Component {
 		}
 	}
 
-	componentDidMount() {
+	componentDidMount() { //Mounting, after render()
 		fetch('https://jsonplaceholder.typicode.com/users')
 			.then(response => {
 				return response.json();
 			})
-			.then(users => {
-				this.setState({ robots: users })
+			.then(usuarios => {
+				this.setState({ robots: usuarios })
 			})
 	}
 
-	onSearchChange = (event) => { //random name
-		this.setState({ searchfield: event.target.value })
+	onSearchChange = (e) => { //random name / custom function decl.
+		this.setState({ searchfield: e.target.value })
 		//update this state (searchfield)
 	}
 
 	render() {
-		const filterRobots = this.state.robots.filter(robot => {
-			return robot.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
+		const { robots, searchfield } = this.state; //destructuring
+		const filterRobots = robots.filter(robo => {
+			return robo.name.toLowerCase().includes(searchfield.toLowerCase());
 		})
-		if(this.state.robots.length === 0) { //if `componentDidMount()` get slows, then show 'loading'
+		if(robots.length === 0) { //if `componentDidMount()` get slows, then show 'loading'
 			return <h1>Loading</h1>
 		}else {
 			return (
@@ -42,7 +44,9 @@ class App extends Component {
 				<h1 className='f1'>Amigos Robos</h1>      
 			  	<SearchBox buscarMudanca={this.onSearchChange}/> {/*eh a funcao 'buscarMudanca' no `SearchBox` - l155 - 17:10*/}
 			   	<Scroll>
-			   		<CardList robosFofos={filterRobots} /> 
+			   		<ErrorBoundary>
+			   			<CardList robosFofos={filterRobots} /> 
+			   		</ErrorBoundary>
 			   	</Scroll>
 			  </div>
 			);

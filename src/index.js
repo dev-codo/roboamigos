@@ -2,13 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 // eslint-disable-next-line
-import Card from './Card';
-import App from './App'; //parent of Card
+import App from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
 import 'tachyons';
-import './index.css';
 
-ReactDOM.render(<App /> //robots: `robots.js`
-	, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 
 registerServiceWorker();
