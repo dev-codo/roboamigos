@@ -7,8 +7,7 @@ const SearchBox = ({ buscarMudanca }) => { //({prop})
 				className='tc pa3 ba b--green bg-lightest-blue'
 				type='search'
 				placeholder='search robot'
-				onChange={buscarMudanca} //buscarMudanca -> function
-				//when onChange is triggered, it calls buscarMudanca (prop) function
+				onChange={buscarMudanca}
 			/>
 		</div>
 	);

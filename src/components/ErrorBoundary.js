@@ -8,8 +8,7 @@ class ErrorBoundary extends Component {
 		}
 	}
 
-	//like try, catch block
-	componentDidCatch(error, info) { //if error, run this lifecycle hook
+	componentDidCatch(error, info) {
 		this.setState({ hasError:true })
 	}
 
