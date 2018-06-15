@@ -33,22 +33,30 @@ class App extends Component {
 
 	render() {
 		const { robots, searchfield } = this.state; //destructuring
+
 		const filterRobots = robots.filter(robo => {
 			return robo.name.toLowerCase().includes(searchfield.toLowerCase());
-		})
+		}) //if comparison is true, then return the value and assign to filterRobots.
+		
 		if(robots.length === 0) { //if `componentDidMount()` get slows, then show 'loading'
+			console.log("Aqui " + robots.length); //output: 0 (which is: false).
+			/*
+			  (robots.length) => 0 => false
+			  .Para o if() ser verdadeiro e executar, precisa colocar o ! para converter...
+			  ... o (robots.length) de 0(false) para 1 (true) na condicao if.
+			*/
 			return <h1>Loading</h1>
-		}else {
+		} else {
 			return (
-			  <div className='tc'>
-				<h1 className='f1'>Amigos Robos</h1>      
-			  	<SearchBox buscarMudanca={this.onSearchChange}/> {/*eh a funcao 'buscarMudanca' no `SearchBox` - l155 - 17:10*/}
-			   	<Scroll>
-			   		<ErrorBoundary>
-			   			<CardList robosFofos={filterRobots} /> 
-			   		</ErrorBoundary>
-			   	</Scroll>
-			  </div>
+				<div className='tc'>
+					<h1 className='f1'>Amigos Robos</h1>      
+			  		<SearchBox buscarMudanca={this.onSearchChange}/> {/*eh a funcao 'buscarMudanca' no `SearchBox` - l155 - 17:10*/}
+			   		<Scroll>
+			   			<ErrorBoundary>
+			   				<CardList robosFofos={filterRobots} /> 
+			   			</ErrorBoundary>
+			   		</Scroll>
+			  	</div>
 			);
 		}
 

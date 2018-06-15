@@ -27,7 +27,7 @@ const CardList = ({ robosFofos }) => { //robosFofos -> prop
 				robosFofos.map((user, i) => { //pai que contem <Card>
 					return (
 						<Card //esqueleto para o `robots.js`
-							key={i} //key prop should have something that 	doesn't change. Better key in this case 	  would be something unique like id.
+							key={user.id} //key prop should have something that doesn't change. Better key in this case would be something unique like id, instead of 'i'
 							id={user.id} 
 							name={user.name} 
 							email={user.email} 
