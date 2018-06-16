@@ -1,4 +1,4 @@
-import { CHANGE_SEARCH_FIELD } from './constans.js';
+import { CHANGE_SEARCH_FIELD } from './constants.js';
 
 const initialState = {
 	searchField: ''
@@ -6,7 +6,7 @@ const initialState = {
 
 export const searchRobots = (state=initialState, action={}) => {
 	switch(action.type) {
-		case: CHANGE_SEARCH_FIELD:
+		case CHANGE_SEARCH_FIELD:
 			return Object.assign({}, state, {searchField: action.payload});
 			// return { ...state, {searchField: action.payload}}; // another way - ES6
 		default:
